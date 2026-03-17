@@ -14,26 +14,45 @@ and the Flutter guide for
 TODO: Put a short description of the package here that helps potential users
 know whether this package might be useful for them.
 
-## Features
+## 
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Библиотека В.И.К.А.
 
-## Getting started
+Библиотека, предназначенная для взаимодействия сервисов В.И.К.А. с сервером - выгрузка файлов соревнований на сервер, загрузка на устройство. Представлены следующие методы API:
+* uploadCompetition - загрузка "чистого" файла соревнований на сервер
+* uploadMedia - загрузка медиафайла из соревнований на сервер
+* getAllCompetitions - получение списка всех соревнований на сервере в формате `List<CompetitionMinModel\>`
+* downloadCompetition - скачивание "чистого файла" соревнований
+* downloadMedia - скачивание медиафайла для соревнований
+* deleteCompetition - удаление соревнований с сервера
+* deleteAllCompetitions - удаление всех соревнований с сервера
+* isCompetitionSaved - проверка, имеется ли файл соревнований на сервере
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Помимо методов взаимодействия с сервером, хранит также такие модели, как:
+* CompetitionModel (Hive typeId **1**)
+* TeamClassModel (Hive typeId **2**)
+* TaskModel (Hive typeId **3**)
+* ActionModel (Hive typeId **4**)
+* ConditionModel (Hive typeId **5**)
+* UploadedFileModel (Hive typeId **6**)
 
-## Usage
+## Использование
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+После импорта библиотеки в проект для работы с сетевыми запросами необходимо создать экземпляр класса `NetworkService`:
 
 ```dart
-const like = 'sample';
+final networkService = NetworkService();
+```
+и обращаться к методам.
+
+Если же нужно работать с классами данных, то достаточно просто вызвать нужный класс:
+
+```dart
+final task = TaskModel(...);
 ```
 
-## Additional information
+Для регистрации адаптера требуется вызвать соответствующий класс:
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```dart
+Hive.registerAdapter(TaskModelAdapter());
+```
