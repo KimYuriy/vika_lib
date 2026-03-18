@@ -5,6 +5,7 @@ import 'package:vika_lib/src/models/competition/task/task.dart';
 part 'team_class.freezed.dart';
 part 'team_class.g.dart';
 
+/// Модель класса участников. Hive ID 2
 @freezed
 class TeamClassModel with _$TeamClassModel {
   @HiveType(typeId: 2, adapterName: 'TeamClassModelAdapter')

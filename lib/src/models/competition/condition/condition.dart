@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 part 'condition.freezed.dart';
 part 'condition.g.dart';
 
+/// Модель условия для получения упражнения. Hive ID 5
 @freezed
 class ConditionModel with _$ConditionModel {
   @HiveType(typeId: 5, adapterName: 'ConditionModelAdapter')

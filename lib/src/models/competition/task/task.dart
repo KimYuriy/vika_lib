@@ -7,6 +7,7 @@ import 'package:vika_lib/src/models/competition/uploaded_file/uploaded_file.dart
 part 'task.freezed.dart';
 part 'task.g.dart';
 
+/// Модель упражнения. Hive ID 3
 @freezed
 class TaskModel with _$TaskModel {
   @HiveType(typeId: 3, adapterName: 'TaskModelAdapter')

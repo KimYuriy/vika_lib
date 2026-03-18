@@ -1,3 +1,4 @@
+/// Энумератор типов файлов
 enum FileTypeEnum {
   images('images'),
   audios('audios'),

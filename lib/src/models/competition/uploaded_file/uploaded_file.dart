@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 part 'uploaded_file.freezed.dart';
 part 'uploaded_file.g.dart';
 
+/// Модель медиафайла. Hive ID 6
 @freezed
 class UploadedFileModel with _$UploadedFileModel {
   @HiveType(typeId: 6, adapterName: "UploadedFileModelAdapter")
