@@ -10,12 +10,6 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages). 
 -->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## 
-
 ## Библиотека В.И.К.А.
 
 Библиотека, предназначенная для взаимодействия сервисов В.И.К.А. с сервером - выгрузка файлов соревнований на сервер, загрузка на устройство. Представлены следующие методы API:
