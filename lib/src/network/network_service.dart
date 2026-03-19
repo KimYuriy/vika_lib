@@ -23,7 +23,7 @@ class NetworkService {
         'operation': jsonEncode(competition.toJson())
       };
       await _dio.post("/upload/operation", data: formData);
-    } on DioException catch (e) {
+    } catch (e) {
       throw Exception("Ошибка отправки соревнований: $e");
     }
   }
@@ -32,7 +32,7 @@ class NetworkService {
   Future<void> uploadMedia({ required int competitionID, required ServerMediaModel serverMedia, required FileTypeEnum fileType }) async {
     try {
       await _dio.post("/upload/operation/$competitionID/${fileType.value}", data: jsonEncode(serverMedia.toJson()));
-    } on DioException catch (e) {
+    } catch (e) {
       throw Exception('Ошибка отправки медиафайла: $e');
     }
   }
@@ -42,8 +42,7 @@ class NetworkService {
     try {
       final response = await _dio.get('/download/min-data');
       final List data = jsonDecode(jsonEncode(response.data));
-      final minData = data.map((json) => CompetitionMinModel.fromJson(json)).toList();
-      return minData;
+      return data.map((json) => CompetitionMinModel.fromJson(json)).toList();
     } catch (e) {
       throw Exception("Ошибка выполнения запроса: $e");
     }
@@ -54,7 +53,7 @@ class NetworkService {
     try {
       final response = await _dio.get('/download/$id');
       return CompetitionModel.fromJson(json.decode(response.data["operation"]));
-    } on DioException catch (e) {
+    } catch (e) {
       throw Exception("Ошибка скачивания соревнования: $e");
     }
   }
@@ -68,8 +67,6 @@ class NetworkService {
       );
       final List data = response.data;
       return data.map((media) => DownloadMediaModel.fromJson(jsonDecode(jsonEncode(media)))).toList();
-    } on DioException catch (e) {
-      throw Exception('(Dio) Ошибка скачивания ${fileType.value}: $e');
     } catch (e) {
       throw Exception('Ошибка скачивания ${fileType.value}: \nID класса: $competitionID\nID задания: $taskID\n$e');
     }
@@ -79,15 +76,16 @@ class NetworkService {
   Future<void> deleteCompetition({ required int id }) async {
     try {
       await _dio.delete("/operation/delete/$id");
-    } on DioException catch (e) {
+    } catch (e) {
       throw Exception("Ошибка удаления соревнования: $e");
     }
   }
 
   /// Метод удаления всех соревнований и медиафайлов с сервера
   Future<void> deleteAllCompetitions() async {
-    final response = await _dio.delete('/operation/delete-all');
-    if (response.statusCode != 200) {
+    try {
+      await _dio.delete('/operation/delete-all');
+    } catch (e) {
       throw Exception("Ошибка удаления всех соревнований");
     }
   }

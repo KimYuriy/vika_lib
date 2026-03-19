@@ -1,15 +1,13 @@
 name: vika_lib
 description: A starting point for Dart libraries or applications.
-version: 1.0.0
+version: 1.0.2
 publish_to: none
 repository: https://github.com/KimYuriy/vika_lib.git
 
 environment:
   sdk: ^3.10.1
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.9.0
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
   dio: ^5.7.0
